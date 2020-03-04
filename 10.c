@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
  
-float a[11][11],mx=-1e9,savee,savee1;
+float a[11][11],max=-1e9,m,n;
 int i,j,save;
  
 int main() {
@@ -17,23 +17,23 @@ int main() {
  
     for(i=1; i<=3; i++)
     {
-        if(a[i][1]>mx){save=i; mx=a[i][1];}
+        if(a[i][1]>max){save=i; max=a[i][1];}
     }
  
     for(i=1; i<=4; i++)
     {
-        savee=a[1][i];
-        savee1=a[save][i];
-        a[1][i]=savee1;
-        a[save][i]=savee;
+        m=a[1][i];
+        n=a[save][i];
+        a[1][i]=n;
+        a[save][i]=m;
     }
  
     for(i=1; i<=3; i++)
     {
         for(j=1; j<=4; j++)
         {
-            if(j==1) savee=a[i][j];
-            a[i][j]/=savee;
+            if(j==1) m=a[i][j];
+            a[i][j]/=m;
         }
     }
 
@@ -45,21 +45,21 @@ int main() {
         }
     }
  
-    mx=0;
+    max=0;
 
     for(i=2; i<=3; i++)
     {
-        if(a[i][2]>mx){mx=a[i][2],save=i;}
+        if(a[i][2]>max){max=a[i][2],save=i;}
     }
 
     if(save==3)
     {
         for(i=1; i<=4; i++)
         {
-            savee=a[3][i];
-            savee1=a[2][i];
-            a[2][i]=savee;
-            a[3][i]=savee1;
+            m=a[3][i];
+            n=a[2][i];
+            a[2][i]=m;
+            a[3][i]=n;
         }
     }
 
@@ -67,8 +67,8 @@ int main() {
     {
         for(j=2; j<=4; j++)
         {
-            if(j==2) savee=a[i][j];
-            a[i][j]/=savee;
+            if(j==2) m=a[i][j];
+            a[i][j]/=m;
         }
     }
 
